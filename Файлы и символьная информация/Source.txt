@@ -1,0 +1,31 @@
+#include <iostream> 
+#include <fstream> 
+using namespace std;
+
+int main()
+{
+    setlocale(LC_ALL, "RUSSIAN");
+
+    ifstream fin("c:\\Temp\\f1.txt");
+
+    if (fin.fail()) { 
+        cout << "open file ERROR"; 
+        return 1; 
+    }
+
+    char slovo[65], poisk[65];
+    int kolich = 0;
+
+    cout << "Введите искомое слово: ";
+    cin >> poisk;
+
+    while (!fin.eof())
+    {
+        fin >> slovo;
+        if (_strnicmp(slovo, poisk, 65) == 0) {
+            kolich++;
+        }
+    }
+    cout << "Количество повторяющихся слов: " << kolich << endl;
+    return 0;
+}
